@@ -22,7 +22,7 @@ A full-stack Node.js web application that fetches coffee data from a public API,
 ## 🚀 Getting Started
 
 1. Clone the repo:
-- git clone https://github.com/your-username/coffee-project.git
+- git clone https://github.com/femiliaartwork/CoffeeProject.git
 
 2. Install dependencies:
 - npm install / npm i
@@ -39,5 +39,5 @@ A full-stack Node.js web application that fetches coffee data from a public API,
 
 ## 🙌 Author
 
-Shawn (https://github.com/your-username)
+Shawn (https://github.com/femiliaartwork)
 
