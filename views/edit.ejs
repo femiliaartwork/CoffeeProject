@@ -1,0 +1,49 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Edit Drink</h2>
+  <form action="/drinks/<%= drink.id %>/update" method="POST" class="bg-light p-4 rounded shadow-sm">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" value="<%= drink.title %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea name="description" class="form-control" rows="3" required><%= drink.description %></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Ingredients (comma-separated)</label>
+      <input type="text" name="ingredients" class="form-control" value="<%= drink.ingredients.join(', ') %>">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Image URL</label>
+      <input type="url" name="image" class="form-control" value="<%= drink.image %>">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input type="number" step="0.01" name="price" class="form-control" value="<%= drink.price %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Total Sales</label>
+      <input type="number" name="totalSales" class="form-control" value="<%= drink.total_sales %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Temperature</label>
+      <select name="temperature" class="form-select">
+        <option value="hot" <%= drink.temperature === 'hot' ? 'selected' : '' %>>Hot</option>
+        <option value="cold" <%= drink.temperature === 'cold' ? 'selected' : '' %>>Cold</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Drink</button>
+    <a href="/" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

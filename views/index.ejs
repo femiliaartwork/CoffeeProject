@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs') %>
+
+<h2 class="text-center mb-4" style="color:#5d3a00;">Our Drinks</h2>
+
+<div class="row">
+  <% drinks.forEach(drink => { %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow">
+        <img src="<%= drink.image %>" class="card-img-top" alt="<%= drink.title %>" style="height: 200px; object-fit: cover;">
+        <div class="card-body" style="background-color: #fff6e6;">
+          <h5 class="card-title"><%= drink.title %> <span class="badge bg-secondary"><%= drink.temperature %></span></h5>
+          <p class="card-text"><%= drink.description %></p>
+          <p><strong>$<%= drink.price %></strong></p>
+          <form action="/delete-drink/<%= drink.id %>" method="POST">
+            <a href="/drinks/<%= drink.id %>/edit" class="btn btn-sm btn-outline-dark">Edit</a>
+            <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<hr class="my-4">
+
+<h3 style="color:#5d3a00;">Add a New Drink</h3>
+<form action="/drinks" method="POST" class="row g-3">
+  <div class="col-md-6">
+    <input type="text" name="title" class="form-control" placeholder="Drink Name" required>
+  </div>
+  <div class="col-md-6">
+    <input type="text" name="description" class="form-control" placeholder="Description">
+  </div>
+  <div class="col-md-6">
+    <input type="text" name="image" class="form-control" placeholder="Image URL">
+  </div>
+  <div class="col-md-3">
+    <input type="number" step="0.01" name="price" class="form-control" placeholder="Price">
+  </div>
+  <div class="col-md-3">
+    <select name="temperature" class="form-select">
+      <option value="hot">Hot</option>
+      <option value="cold">Cold</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <textarea name="ingredients" class="form-control" placeholder="e.g., coffee bean, milk, sugar"></textarea>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-success" type="submit">Add Drink</button>
+  </div>
+</form>
+
+<%- include('partials/footer.ejs') %>
